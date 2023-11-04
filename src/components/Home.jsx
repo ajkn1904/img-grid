@@ -15,47 +15,47 @@ const Home = () => {
 
     const [items, setItems] = useState([
         {
-            img: img1,
+            image: img1,
             selected: false
         },
         {
-            img: img2,
+            image: img2,
             selected: false
         },
         {
-            img: img3,
+            image: img3,
             selected: false
         },
         {
-            img: img4,
+            image: img4,
             selected: false
         },
         {
-            img: img5,
+            image: img5,
             selected: false
         },
         {
-            img: img6,
+            image: img6,
             selected: false
         },
         {
-            img: img7,
+            image: img7,
             selected: false
         },
         {
-            img: img8,
+            image: img8,
             selected: false
         },
         {
-            img: img9,
+            image: img9,
             selected: false
         },
         {
-            img: img10,
+            image: img10,
             selected: false
         },
         {
-            img: img11,
+            image: img11,
             selected: false
         }
     ]);
@@ -93,10 +93,14 @@ const Home = () => {
                     return (
                         
                         <div key={index} onDragOver={e => e.preventDefault()} onDragStart={e => onDragStart(e, index)} onDrop={e => onDrop(e, index)} draggable='true' onClick={() => toggleSelection(index)} className={`${index === 0 ? 'row-span-2 col-span-2' : ''} border rounded-md cursor-pointer hover:border-2 relative`}>
+                         
+                         <div className="relative group">
+                                
+                                <input type='checkbox' checked={item.selected} className={`absolute top-2 right-2 z-10 opacity-0 ${item.selected ? 'opacity-100' : 'group-hover:opacity-100'}`} readOnly />
+                                
+                                <img src={item.image} alt="image" className={`rounded-md transition-transform transform bg-white hover:brightness-50 ${item.selected ? 'brightness-90' : ''}`} />
                             
-                            <input type='checkbox' checked={item.selected} className="absolute top-2 right-2 z-10" readOnly />
-                            
-                            <img src={item.img} alt="image" className='rounded-md' />
+                            </div>
 
                         </div>
                     )}
