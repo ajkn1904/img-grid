@@ -14,7 +14,50 @@ import img11 from '/images/image-11.jpeg'
 const Home = () => {
 
     const [items, setItems] = useState([
-        img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11
+        {
+            img: img1,
+            selected: false
+        },
+        {
+            img: img2,
+            selected: false
+        },
+        {
+            img: img3,
+            selected: false
+        },
+        {
+            img: img4,
+            selected: false
+        },
+        {
+            img: img5,
+            selected: false
+        },
+        {
+            img: img6,
+            selected: false
+        },
+        {
+            img: img7,
+            selected: false
+        },
+        {
+            img: img8,
+            selected: false
+        },
+        {
+            img: img9,
+            selected: false
+        },
+        {
+            img: img10,
+            selected: false
+        },
+        {
+            img: img11,
+            selected: false
+        }
     ]);
 
     const onDragStart = (e, i) => {
@@ -29,6 +72,13 @@ const Home = () => {
         setItems(newItemsList);
     };
 
+    const toggleSelection = (i) => {
+        const newItemsList = [...items];
+        newItemsList[i].selected = !newItemsList[i].selected;
+        setItems(newItemsList);
+    };
+
+
     return (
         <div className='bg-white rounded-md p-5'>
 
@@ -41,9 +91,12 @@ const Home = () => {
 
                 {items.map((item, index) => {
                     return (
-                        <div key={index} onDragOver={e => e.preventDefault()} onDragStart={e => onDragStart(e, index)} onDrop={e => onDrop(e, index)} draggable='true' className={`${index === 0 ? 'row-span-2 col-span-2' : ''} border rounded-md cursor-pointer hover:border-2`}>
-
-                            <img src={item} alt="image" className='rounded-md' />
+                        
+                        <div key={index} onDragOver={e => e.preventDefault()} onDragStart={e => onDragStart(e, index)} onDrop={e => onDrop(e, index)} draggable='true' onClick={() => toggleSelection(index)} className={`${index === 0 ? 'row-span-2 col-span-2' : ''} border rounded-md cursor-pointer hover:border-2 relative`}>
+                            
+                            <input type='checkbox' checked={item.selected} className="absolute top-2 right-2 z-10" readOnly />
+                            
+                            <img src={item.img} alt="image" className='rounded-md' />
 
                         </div>
                     )}
