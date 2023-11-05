@@ -67,7 +67,6 @@ const Home = () => {
     const newItemsList = [...items];
 
     const onDrop = (e, i) => {
-        //const newItemsList = [...items];
         const currentIndex = e.dataTransfer.getData('index');
         const [draggedImg] = newItemsList.splice(currentIndex, 1);
         newItemsList.splice(i, 0, draggedImg);
@@ -75,19 +74,17 @@ const Home = () => {
     };
 
     const toggleSelection = (i) => {
-        //const newItemsList = [...items];
         newItemsList[i].selected = !newItemsList[i].selected;
         setItems(newItemsList);
     };
 
     const filteredList = newItemsList.filter(data => data.selected);
-    //console.log(filteredList);
 
     const deleteSelectedItems = () => {
         const updatedList = newItemsList.filter(data => !data.selected);
         setItems(updatedList);
     };
-    console.log(filteredList);
+    
 
     return (
         <div className='bg-white rounded-md py-5 md:py-10'>
