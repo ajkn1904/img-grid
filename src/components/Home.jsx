@@ -103,7 +103,7 @@ const Home = () => {
 
     return (
         <div
-            className='bg-white rounded-md py-5 md:py-10'
+            className='bg-white min-h-[96vh] lg:min-h-[94vh] rounded-md py-5 md:py-10'
         >
 
             <div
